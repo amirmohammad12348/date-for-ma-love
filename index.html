@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>قرار امیر و نیوشا ❤️</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+    font-family:tahoma, sans-serif;
+    overflow:hidden;
+}
+
+.box{
+    background:white;
+    width:90%;
+    max-width:400px;
+    padding:30px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+.heart{
+    font-size:60px;
+}
+
+h1{
+    color:#e91e63;
+}
+
+button{
+    border:none;
+    padding:15px 35px;
+    margin:10px;
+    border-radius:30px;
+    font-size:18px;
+    cursor:pointer;
+}
+
+.yes{
+    background:#e91e63;
+    color:white;
+}
+
+.no{
+    background:#ddd;
+    position:relative;
+}
+
+#calendar{
+    display:none;
+    margin-top:20px;
+}
+
+input{
+    padding:10px;
+    border-radius:10px;
+    border:1px solid #ccc;
+}
+
+#result{
+    color:#e91e63;
+    font-size:18px;
+    font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<div class="heart">❤️</div>
+
+<h1>نیوشا جان...</h1>
+
+<h2>با من قرار میای؟ 😍</h2>
+
+<button class="yes" onclick="yesClick()">آره ❤️</button>
+
+<button class="no" onmouseover="moveNo()">نه 😅</button>
+
+
+<div id="calendar">
+
+<h3>روز قرارمون رو انتخاب کن 📅</h3>
+
+<input type="date" id="date">
+
+<br>
+
+<button class="yes" onclick="saveDate()">
+ثبت قرار 💕
+</button>
+
+</div>
+
+
+<p id="result"></p>
+
+
+</div>
+
+
+<script>
+
+function moveNo(){
+
+let no=document.querySelector(".no");
+
+no.style.position="fixed";
+
+no.style.left=Math.random()*80+"%";
+
+no.style.top=Math.random()*80+"%";
+
+}
+
+
+
+function yesClick(){
+
+document.querySelector(".yes").style.display="none";
+
+document.querySelector(".no").style.display="none";
+
+document.getElementById("calendar").style.display="block";
+
+fireworks();
+
+}
+
+
+
+function fireworks(){
+
+for(let i=0;i<80;i++){
+
+let f=document.createElement("div");
+
+f.innerHTML="🎉";
+
+f.style.position="fixed";
+
+f.style.left=Math.random()*100+"%";
+
+f.style.top="-30px";
+
+f.style.fontSize="30px";
+
+f.style.transition="3s";
+
+document.body.appendChild(f);
+
+
+setTimeout(function(){
+
+f.style.top="100%";
+
+},100);
+
+
+setTimeout(function(){
+
+f.remove();
+
+},3000);
+
+}
+
+}
+
+
+
+function saveDate(){
+
+let date=document.getElementById("date").value;
+
+
+if(date==""){
+
+alert("اول تاریخ رو انتخاب کن ❤️");
+
+return;
+
+}
+
+
+document.getElementById("result").innerHTML=
+
+"نیوشا جان ❤️<br>"+
+"قرارمون برای "+date+" ثبت شد 😍<br>"+
+"از طرف امیر";
+
+}
+
+</script>
+
+
+</body>
+</html>
