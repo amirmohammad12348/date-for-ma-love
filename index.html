@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Amir ❤️ Zahra</title>
+<title>Amir ❤️ Niousha</title>
 
 <style>
-
 body{
 margin:0;
 height:100vh;
 display:flex;
-justify-content:center;
 align-items:center;
-background:linear-gradient(135deg,#000,#900020);
+justify-content:center;
+background:linear-gradient(135deg,#000,#8b0000);
 font-family:tahoma;
 overflow:hidden;
 }
@@ -23,12 +21,12 @@ overflow:hidden;
 .box{
 background:#111;
 color:white;
-padding:35px;
-border-radius:25px;
-text-align:center;
 width:90%;
 max-width:400px;
-box-shadow:0 0 35px red;
+padding:30px;
+border-radius:25px;
+text-align:center;
+box-shadow:0 0 30px red;
 }
 
 .heart{
@@ -46,10 +44,10 @@ color:#ff1744;
 
 button{
 border:0;
-padding:15px 30px;
+padding:14px 25px;
+margin:8px;
 border-radius:30px;
-font-size:18px;
-margin:10px;
+font-size:17px;
 cursor:pointer;
 }
 
@@ -63,77 +61,68 @@ background:#333;
 color:white;
 }
 
-#calendar{
+#box2{
 display:none;
+}
+
+#time,#result{
+color:#ff6688;
+font-weight:bold;
 }
 
 input{
 padding:12px;
 border-radius:10px;
-font-size:16px;
-}
-
-#time,#final{
-color:#ff6688;
-font-weight:bold;
 }
 
 </style>
-
 </head>
 
 
 <body>
 
-
 <div class="box">
 
 <div class="heart">❤️</div>
 
-<h1>زهرا جان</h1>
+<h1>نیوشا جان</h1>
 
-<h2 id="text">
+<h2 id="txt">
 با من قرار میای؟ 😍
 </h2>
 
 
-<button class="yes" onclick="yesClick()">
+<button class="yes" onclick="yes()">
 آره ❤️
 </button>
 
-
-<button class="no" onclick="noClick()">
+<button class="no" onclick="no()">
 نه 😅
 </button>
 
 
-
-<div id="calendar">
+<div id="box2">
 
 <h2>Good Girl ❤️</h2>
 
 <p id="time"></p>
 
 <p>
-حالا روز و ساعت قرارمون رو انتخاب کن 📅
+روز و ساعت قرارمون رو انتخاب کن 📅
 </p>
-
 
 <input type="datetime-local" id="date">
 
-
 <br>
 
-
-<button class="yes" onclick="saveDate()">
+<button class="yes" onclick="save()">
 ثبت قرار 💕
 </button>
-
 
 </div>
 
 
-<p id="final"></p>
+<div id="result"></div>
 
 
 </div>
@@ -142,91 +131,67 @@ font-weight:bold;
 
 <script>
 
-
-function noClick(){
-
+function no(){
 alert("تو حق انتخاب گزینه نه رو نداری 😄❤️");
-
 }
 
 
-
-function yesClick(){
+function yes(){
 
 document.querySelector(".yes").style.display="none";
-
 document.querySelector(".no").style.display="none";
 
+document.getElementById("txt").innerHTML="Good Girl ❤️";
 
-document.getElementById("text").innerHTML=
-"Good Girl ❤️";
+document.getElementById("box2").style.display="block";
 
-
-document.getElementById("calendar").style.display="block";
-
-
-fireworks();
+heartRain();
 
 }
 
 
 
-
-function updateTime(){
+function clock(){
 
 let t=new Date().toLocaleTimeString("fa-IR",{
-
 timeZone:"Asia/Tehran",
-
 hour:"2-digit",
 minute:"2-digit",
 second:"2-digit"
-
 });
-
 
 document.getElementById("time").innerHTML=
 "🕒 ساعت ایران: "+t;
 
 }
 
-
-setInterval(updateTime,1000);
-
-updateTime();
+setInterval(clock,1000);
+clock();
 
 
 
+function heartRain(){
 
+for(let i=0;i<40;i++){
 
-function fireworks(){
+let h=document.createElement("div");
 
-for(let i=0;i<60;i++){
+h.innerHTML="❤️";
 
-let f=document.createElement("div");
+h.style.position="fixed";
+h.style.left=Math.random()*100+"%";
+h.style.top="-20px";
+h.style.fontSize="25px";
+h.style.transition="3s";
 
-f.innerHTML="❤️";
-
-f.style.position="fixed";
-f.style.left=Math.random()*100+"%";
-f.style.top="-20px";
-f.style.fontSize="30px";
-f.style.transition="3s";
-
-document.body.appendChild(f);
-
+document.body.appendChild(h);
 
 setTimeout(()=>{
-
-f.style.top="100%";
-
+h.style.top="100%";
 },100);
 
-
 setTimeout(()=>{
-
-f.remove();
-
+h.remove();
 },3000);
 
 }
@@ -235,62 +200,50 @@ f.remove();
 
 
 
-
-
-function saveDate(){
+function save(){
 
 let d=document.getElementById("date").value;
 
 
-if(d==""){
-
-alert("اول زمان قرار رو انتخاب کن ❤️");
-
+if(!d){
+alert("اول تاریخ رو انتخاب کن ❤️");
 return;
-
 }
 
 
-document.getElementById("final").innerHTML=
+document.getElementById("result").innerHTML=
 
-"❤️ ثبت شد زهرا ❤️<br><br>"+
-"📅 قرار ما: "+d+
-"<br><br>امیر منتظرته 😍"+
+"❤️ ثبت شد نیوشا ❤️<br><br>"+
+"📅 قرار: "+d+
 "<br><br>"+
-'<button class="yes" onclick="sendTelegram()">ارسال برای امیر در تلگرام 💙</button>';
+'<button class="yes" onclick="telegram()">ارسال به امیر 💙</button>';
 
 }
 
 
 
+function telegram(){
 
-function sendTelegram(){
-
-let date=document.getElementById("date").value;
+let d=document.getElementById("date").value;
 
 
-let message=
-
+let msg=
 "❤️ قرار ثبت شد ❤️\n\n"+
-"اسم: زهرا\n"+
-"📅 تاریخ و ساعت قرار: "+date+
+"اسم: نیوشا\n"+
+"📅 تاریخ و ساعت: "+d+
 "\n\nمنتظرتم امیر 😍";
 
 
-let url=
+let link=
+"https://t.me/mirmolakhah?text="
++encodeURIComponent(msg);
 
-"https://t.me/Cyberko001?text="+
-encodeURIComponent(message);
 
-
-window.open(url,"_blank");
+window.open(link,"_blank");
 
 }
 
-
 </script>
 
-
 </body>
-
 </html>
